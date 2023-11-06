@@ -1,0 +1,44 @@
+.container{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.header{
+    margin-bottom: 70px;
+}
+.form__send{
+
+}
+
+.form__1{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.smiley-catalog {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    /* position: absolute; */
+    top: 30px;
+    right: 0;
+    flex-direction: column;
+}
+
+.smiley-catalog.show {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 130px;
+}
+
+.smiley__block{
+    position: absolute;
+    right: 18%;
+    top: 30%;
+}
+
+.catalog__btn{
+    float: right;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HR panel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <section class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand" href="index.html">HR Panel</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="index.html">Відправити</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="section.html">Відкладина відправка</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Зворотній зв'язок</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </section>
+    <section class="send__message">
+        <div class="container">
+            <div class="form__send">
+                <form id="form378543988" class="form__1" name='form378543988'>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Назва оголошення</label>
+                    <input type="text" name="Name" class="form-control" id="exampleFormControlInput1" placeholder="Назва">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Текст оголошення</label>
+                    <textarea class="form-control" name="Phone" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <button id="openCatalogButton" class="catalog__btn">Відкрити каталог смайликів</button>
+                    <div class="smiley__block">
+                      <div class="smiley-catalog">
+                        <button class="smiley" data-smiley="😊">😊</button>
+                        <button class="smiley" data-smiley="😁">😁</button>
+                        <button class="smiley" data-smiley="😄">😄</button>
+                        <button class="smiley" data-smiley="❗">❗</button> <!-- Знак оклику -->
+                        <button class="smiley" data-smiley="➡️">➡️</button> <!-- Стрілочка вправо -->
+                        <button class="smiley" data-smiley="🙌">🙌</button> <!-- Руки вгору -->
+                        <button class="smiley" data-smiley="🤣">🤣</button> <!-- Сміх обличчя зі сльозами від сміху -->
+                        <button class="smiley" data-smiley="👍">👍</button> <!-- Піднятий великий палець вгору -->
+                        <button class="smiley" data-smiley="💖">💖</button> <!-- Серце -->
+                        <button class="smiley" data-smiley="🥰">🥰</button> <!-- Закохане обличчя з очима в формі сердеця -->
+                        <button class="smiley" data-smiley="👋">👋</button> <!-- Рука, яка махає -->
+                        <button class="smiley" data-smiley="🙏">🙏</button> <!-- Молитва -->
+                        <button class="smiley" data-smiley="🎉">🎉</button> <!-- Веселощі і конфетті -->
+                        <button class="smiley" data-smiley="🐱">🐱</button> <!-- Смайлік котика -->
+                        <button class="smiley" data-smiley="🐶">🐶</button> <!-- Смайлік песика -->
+                        <button class="smiley" data-smiley="🌸">🌸</button> <!-- Квітка -->
+                        <button class="smiley" data-smiley="🌞">🌞</button> <!-- Сонце -->
+                        <button class="smiley" data-smiley="🌈">🌈</button> <!-- Веселий веселка -->
+                        <button class="smiley" data-smiley="🎁">🎁</button> <!-- Подарунок -->
+                        <button class="smiley" data-smiley="🍔">🍔</button> <!-- Бургер -->
+                        <button class="smiley" data-smiley="🍕">🍕</button> <!-- Піца -->
+                        <button class="smiley" data-smiley="🚀">🚀</button> <!-- Ракета -->
+                        <button class="smiley" data-smiley="🏆">🏆</button> <!-- Трофей -->
+                        <button class="smiley" data-smiley="📚">📚</button> <!-- Книги -->
+                        <button class="smiley" data-smiley="🎧">🎧</button> <!-- Навушники -->                            
+                          <!-- Додайте інші смайлики -->
+                      </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Контакти для зворотнього зв'язку</label>
+                    <input class="form-control" name="Contact" id="exampleFormControlTextarea1" rows="3">
+                </div>
+                <input class="btn btn-primary" type="submit" id="Send" value="Відправити">
+                
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--SCRIPTS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="sendBot.js"></script> -->
+    <script src="smileController.js"></script>
+    <script src="section2.js"></script>
+</body>
+</html>
