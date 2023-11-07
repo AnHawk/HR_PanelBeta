@@ -1,6 +1,9 @@
 // Отримайте посилання на текстове поле
 const textarea = document.getElementById('exampleFormControlTextarea1');
+const smileyCatalog = document.querySelector('.smiley-catalog');
+const openCatalogButton = document.getElementById('openCatalogButton');
 
+let isCatalogOpen = false;
 // Обробник події для відкриття/закриття каталогу смайликів
 openCatalogButton.addEventListener('click', function (e) {
     smileyCatalog.classList.toggle('show');
