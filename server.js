@@ -1,3 +1,7 @@
+window.addEventListener('load', function () {
+    console.log('Я працюю');
+});
+
 const express = require('express');
 const axios = require('axios');
 
@@ -12,7 +16,7 @@ function sendMessages() {
     message += `<b>Ім'я відправника: </b>${this.Name.value}\n`;
     message += `<b>Номер телефона відправника: </b>${this.Phone.value}\n`;
     message += `<b>Контакти: </b>${this.Contact.value}`;
-    
+
     CHAT_IDS.forEach((chatId) => {
         axios.post(URI_API, {
             chat_id: chatId,
