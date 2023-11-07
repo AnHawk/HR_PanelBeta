@@ -1,54 +1,38 @@
-window.addEventListener('load', function () {
-    console.log('Я працюю');
-});
-
 const express = require('express');
-const axios = require('axios');
+const bodyParser = require('body-parser');
+const TelegramBot = require('node-telegram-bot-api');
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-const TOKEN = "6746869776:AAFBDOC2iCzZi747ehkV_VtWZlwIe3w8nuU";
+const botToken = '6746869776:AAFBDOC2iCzZi747ehkV_VtWZlwIe3w8nuU'; // Отримайте токен у BotFather на Telegram
+const bot = new TelegramBot(botToken, { polling: false });
+
 const CHAT_IDS = ["-4076977201", "-4095221548"];
-const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-// Отримайте посилання на текстові поля за межами функції
-const nameInput = document.getElementById('Name');
-const phoneInput = document.getElementById('Phone');
-const contactInput = document.getElementById('Contact');
+app.post('/send-message', (req, res) => {
+  const { Name, Phone, Contact } = req.body;
 
-document.getElementById('form378543988').addEventListener('submit', function(e) {
-    e.preventDefault();
+  const message = `<b>Заявка з сайту</b>\n`;
+  message += `<b>Ім'я відправника: </b>${Name}\n`;
+  message += `<b>Номер телефона відправника: </b>${Phone}\n`;
+  message += `<b>Контакти: </b>${Contact}`;
 
-    let message = `<b>Заявка з сайту</b>\n`;
-    message += `<b>Ім'я відправника: </b>${this.Name.value}\n`;
-    message += `<b>Номер телефона відправника: </b>${this.Phone.value}\n`;
-    message += `<b>Контакти: </b>${this.Contact.value}`;
 
-    // Надсилання повідомлення в кожен чат зі списку CHAT_IDS
-    CHAT_IDS.forEach((chatId) => {
-        axios.post(URI_API, {
-            chat_id: chatId,
-            parse_mode: 'html',
-            text: message
-        })
-        .then((res) => {
-            this.Name.value = "";
-            this.Phone.value = "";
-            this.Contact.value = "";
-            console.log("Успіх");
-            success.style.display = "block";
-        })
-        .catch((err) => {
-            console.warn(err);
-        })
-        .finally(() => {
-            console.log("Finally");
-        });
-    });
+  CHAT_IDS.forEach((chatId) => {
+    bot.sendMessage(chatId, message, { parse_mode: 'HTML' })
+      .then(() => {
+        console.log("Успіх");
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  });
 
-    // Відправляти повідомлення кожну хвилину
-    sendMessages(); // Відправити перше повідомлення в момент події submit
+  res.send('Повідомлення надіслано');
+});
 
-    // Викликати sendMessages кожну хвилину
-    setInterval(sendMessages, 60000); // 60000 мс = 1 хвилина
+app.listen(3000, () => {
+  console.log('Сервер працює на порті 3000');
 });
