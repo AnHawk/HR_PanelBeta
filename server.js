@@ -8,8 +8,11 @@ const CHAT_IDS = ["-4076977201", "-4095221548"];
 const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
 function sendMessages() {
-    const message = "Ваше повідомлення";
-
+    let message = `<b>Заявка з сайту</b>\n`;
+    message += `<b>Ім'я відправника: </b>${this.Name.value}\n`;
+    message += `<b>Номер телефона відправника: </b>${this.Phone.value}\n`;
+    message += `<b>Контакти: </b>${this.Contact.value}`;
+    
     CHAT_IDS.forEach((chatId) => {
         axios.post(URI_API, {
             chat_id: chatId,
