@@ -7,12 +7,6 @@ const CHAT_IDS = ["-4076977201", "-4095221548"];
 const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 const success = document.querySelector('.alert');
 
-const smileyCatalog = document.querySelector('.smiley-catalog');
-const openCatalogButton = document.getElementById('openCatalogButton');
-
-let isCatalogOpen = false;
-
-
 document.getElementById('form378543988').addEventListener('submit', function(e) {
     e.preventDefault();
 

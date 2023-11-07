@@ -11,12 +11,20 @@ const TOKEN = "6746869776:AAFBDOC2iCzZi747ehkV_VtWZlwIe3w8nuU";
 const CHAT_IDS = ["-4076977201", "-4095221548"];
 const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-function sendMessages() {
+// Отримайте посилання на текстові поля за межами функції
+const nameInput = document.getElementById('Name');
+const phoneInput = document.getElementById('Phone');
+const contactInput = document.getElementById('Contact');
+
+document.getElementById('form378543988').addEventListener('submit', function(e) {
+    e.preventDefault();
+
     let message = `<b>Заявка з сайту</b>\n`;
     message += `<b>Ім'я відправника: </b>${this.Name.value}\n`;
     message += `<b>Номер телефона відправника: </b>${this.Phone.value}\n`;
     message += `<b>Контакти: </b>${this.Contact.value}`;
 
+    // Надсилання повідомлення в кожен чат зі списку CHAT_IDS
     CHAT_IDS.forEach((chatId) => {
         axios.post(URI_API, {
             chat_id: chatId,
@@ -24,16 +32,23 @@ function sendMessages() {
             text: message
         })
         .then((res) => {
+            this.Name.value = "";
+            this.Phone.value = "";
+            this.Contact.value = "";
             console.log("Успіх");
+            success.style.display = "block";
         })
         .catch((err) => {
             console.warn(err);
+        })
+        .finally(() => {
+            console.log("Finally");
         });
     });
-}
 
-setInterval(sendMessages, 60000); // Відправляти кожну хвилину
+    // Відправляти повідомлення кожну хвилину
+    sendMessages(); // Відправити перше повідомлення в момент події submit
 
-app.listen(3000, () => {
-    console.log('Сервер працює на порті 3000');
+    // Викликати sendMessages кожну хвилину
+    setInterval(sendMessages, 60000); // 60000 мс = 1 хвилина
 });
